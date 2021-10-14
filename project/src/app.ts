@@ -1,3 +1,6 @@
+import axios, { AxiosResponse } from 'axios';
+import { Chart } from 'chart.js';
+
 // utils
 function $(selector: string) {
   return document.querySelector(selector);
@@ -36,8 +39,28 @@ function createSpinnerElement(id: string) {
 let isDeathLoading = false;
 const isRecoveredLoading = false;
 
+interface CovidSummaryResponse {
+  Countries: any[];
+  Date: string;
+  Global: object;
+  Message: string;
+  // [0 … 99]
+  // [100 … 191]
+  // Date: "2021-10-14T08:59:35.963Z"
+  // Global: {NewConfirmed: 258404, TotalConfirmed: 238777195, NewDeaths: 5186, TotalDeaths: 4870213,…}
+  // Date: "2021-10-14T08:59:35.963Z"
+  // NewConfirmed: 258404
+  // NewDeaths: 5186
+  // NewRecovered: 0
+  // TotalConfirmed: 238777195
+  // TotalDeaths: 4870213
+  // TotalRecovered: 0
+  // ID: "015bd7fb-e476-4506-8da8-527fc0ef77e8"
+  // Message: ""
+}
+
 // api
-function fetchCovidSummary() {
+function fetchCovidSummary(): Promise<AxiosResponse<CovidSummaryResponse>> {
   const url = 'https://api.covid19api.com/summary';
   return axios.get(url);
 }
