@@ -10,7 +10,9 @@
     ],
     "noImplicitAny": true,
     "skipLibCheck": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "strict": true,
+    //"strictFunctionTypes": false
   },
   "include": [
     "./src/**/*"
