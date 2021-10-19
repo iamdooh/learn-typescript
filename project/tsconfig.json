@@ -9,6 +9,7 @@
       "DOM.Iterable"
     ],
     "noImplicitAny": true,
+    "skipLibCheck": true,
     "outDir": "./dist"
   },
   "include": [
